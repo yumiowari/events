@@ -1,0 +1,7 @@
+CREATE ROLE client;
+
+GRANT SELECT ON ALL TABLES IN SCHEMA ticketmaster TO client;
+
+CREATE ROLE dba;
+
+GRANT ALL PRIVILEGES ON ALL TABLES IN SCHEMA ticketmaster TO dba;

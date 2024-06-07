@@ -1,5 +1,7 @@
 --sqlacodegen --outfile mapeamento.py postgresql+psycopg2://postgres:1234@localhost:5432/ticketmaster
+
 -- TABELAS --
+
 CREATE TABLE classifications (
 	id text PRIMARY KEY NOT NULL,
 	name text NOT NULL,
@@ -82,9 +84,3 @@ CREATE TABLE attraction_image (
 	attractionid text,
     CONSTRAINT fk_attraction FOREIGN KEY (attractionid) REFERENCES attractions(id)
 );
-
-
-SELECT * FROM Venues;
-SELECT * FROM Events;
-SELECT * FROM Classifications;
-SELECT * FROM Attractions;
