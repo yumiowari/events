@@ -418,33 +418,33 @@ class API:
                                             classificationsid=attr_genre,
                                         )
                     
-                    #Verifica se o objeto já existe no banco
-                    check = self.manipulateDB.selectAttraction(attrObject.id)
-                    id = str(attrObject.id)
-                    #Se não existir, insere no banco
-                    if not check:
-                        self.manipulateDB.insert(attrObject)
-                        print('Attraction inserido no banco. ID: ' + id)
-                    else:
-                        print('Attraction já existe no banco. ID: ' + id)
+                        #Verifica se o objeto já existe no banco
+                        check = self.manipulateDB.selectAttraction(attrObject.id)
+                        id = str(attrObject.id)
+                        #Se não existir, insere no banco
+                        if not check:
+                            self.manipulateDB.insert(attrObject)
+                            print('Attraction inserido no banco. ID: ' + id)
+                        else:
+                            print('Attraction já existe no banco. ID: ' + id)
 
-                    # Preencher tabela de market
-                    if 'images' in attr and len(attr['images']) > 0:
-                        for image in attr['images']:
-                            ven_image = image['url']
-                            imagesObject = AttractionImage(image=ven_image,
-                                                    attractionid=attr['id'],
-                                            )
-                           
-                            #Verifica se o objeto já existe no banco
-                            check = self.manipulateDB.selectAttractionImage(imagesObject.image)
-                            id = str(imagesObject.image)
-                            #Se não existir, insere no banco
-                            if not check:
-                                self.manipulateDB.insert(imagesObject)
-                                print('Attraction image inserido no banco. ID: ' + id)
-                            else:
-                                print('Attraction image já existe no banco. ID: ' + id)
+                        # Preencher tabela de market
+                        if 'images' in attr and len(attr['images']) > 0:
+                            for image in attr['images']:
+                                ven_image = image['url']
+                                imagesObject = AttractionImage(image=ven_image,
+                                                        attractionid=attr['id'],
+                                                )
+                            
+                                #Verifica se o objeto já existe no banco
+                                check = self.manipulateDB.selectAttractionImage(imagesObject.image)
+                                id = str(imagesObject.image)
+                                #Se não existir, insere no banco
+                                if not check:
+                                    self.manipulateDB.insert(imagesObject)
+                                    print('Attraction image inserido no banco. ID: ' + id)
+                                else:
+                                    print('Attraction image já existe no banco. ID: ' + id)
         
                     event_url = event['url'] if 'url' in event else None
                     event_startDate = event['sales']['public']['startDateTime'] if 'startDateTime' in event['sales']['public'] else None
