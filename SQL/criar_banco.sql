@@ -3,84 +3,84 @@
 -- TABELAS --
 
 CREATE TABLE classifications (
-	id text PRIMARY KEY NOT NULL,
-	name text NOT NULL,
-	segmentid text NOT NULL,
-	segmentName text NOT NULL	
+	id varchar(20) PRIMARY KEY NOT NULL,
+	name varchar(50) NOT NULL,
+	segmentid varchar(20) NOT NULL,
+	segmentName varchar(50) NOT NULL	
 );
 
 CREATE TABLE venues (
-	id text PRIMARY KEY NOT NULL,
-	name text NOT NULL,
+	id varchar(20) PRIMARY KEY NOT NULL,
+	name varchar(50) NOT NULL,
 	url text,
-	postalCode text NOT NULL,
-	timezone text NOT NULL,
-	city text NOT NULL,
-	state text NOT NULL,
-	country text NOT NULL,
-	address text
+	postalCode int NOT NULL,
+	timezone varchar(20) NOT NULL,
+	city varchar(20) NOT NULL,
+	state varchar(20) NOT NULL,
+	country varchar(30) NOT NULL,
+	address varchar(50)
 );
 
 CREATE TABLE attractions (
-	id text PRIMARY KEY NOT NULL,
-	name text NOT NULL,
+	id varchar(20) PRIMARY KEY NOT NULL,
+	name varchar(50) NOT NULL,
 	url text,
-	classificationsid text,
+	classificationsid varchar(20),
     CONSTRAINT fk_classifications FOREIGN KEY (classificationsid) REFERENCES classifications(id)
 );
 
 CREATE TABLE events (
-	id text PRIMARY KEY NOT NULL,
-	name text NOT NULL,
+	id varchar(20) PRIMARY KEY NOT NULL,
+	name varchar(50) NOT NULL,
 	url text,
 	StartDateSale date,
 	EndDateSale date,
 	StartDateEvent date,
-	timezone text,
+	timezone varchar(20),
 	minPrice float,
 	maxPrice float,
-	promoter text,
-	venueid text,
-    classificationsid text,
+	promoter varchar(20),
+	venueid varchar(20),
+    classificationsid varchar(20),
 	CONSTRAINT fk_venue FOREIGN KEY (venueid) REFERENCES Venues(id),
     CONSTRAINT fk_classifications FOREIGN KEY (classificationsid) REFERENCES classifications(id)
 );
 
 CREATE TABLE event_attraction(
-	id text PRIMARY KEY,
-	eventid text,
-	attractionid text,
+	id varchar(40) PRIMARY KEY,
+	eventid varchar(20) NOT NULL,
+	attractionid varchar(20) NOT NULL,
 	CONSTRAINT fk_event FOREIGN KEY (eventid) REFERENCES Events(id),
     CONSTRAINT fk_attraction FOREIGN KEY (attractionid) REFERENCES attractions(id)
 );
 
 CREATE TABLE venue_alias (
-    alias text PRIMARY KEY,
-	venueid text,
+    alias varchar(50) PRIMARY KEY,
+	venueid varchar(20) NOT NULL,
     CONSTRAINT fk_venue FOREIGN KEY (venueid) REFERENCES Venues(id)
 );
 
 CREATE TABLE market (
-	id text PRIMARY KEY,
-    market text,
-	venueid text,
+	id varchar(70) PRIMARY KEY,
+    market varchar(50) NOT NULL,
+	venueid varchar(20) NOT NULL,
     CONSTRAINT fk_venue FOREIGN KEY (venueid) REFERENCES Venues(id)
 );
 
 CREATE TABLE venue_image (
     image text PRIMARY KEY,
-	venueid text,
+	venueid varchar(20) NOT NULL,
     CONSTRAINT fk_venue FOREIGN KEY (venueid) REFERENCES Venues(id)
 );
 
 CREATE TABLE event_image (
     image text PRIMARY KEY,
-	eventid text,
+	eventid varchar(20) NOT NULL,
     CONSTRAINT fk_event FOREIGN KEY (eventid) REFERENCES Events(id)
 );
 
 CREATE TABLE attraction_image (
     image text PRIMARY KEY,
-	attractionid text,
+	attractionid varchar(20) NOT NULL,
     CONSTRAINT fk_attraction FOREIGN KEY (attractionid) REFERENCES attractions(id)
 );
