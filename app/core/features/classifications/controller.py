@@ -15,5 +15,3 @@ class Controller:
         segmentid = self.view.segmentid.get()
 
         self.model.fillDict(id, name, segment, segmentid)
-
-        msg.showinfo('','Condições adicionadas à consulta!')

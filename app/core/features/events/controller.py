@@ -20,5 +20,3 @@ class Controller:
         promoter = self.view.promoter.get()
 
         self.model.fillDict(id, name, startDateSale, endDateSale, startDateEvent, timezone, minPrice, maxPrice, promoter)
-
-        msg.showinfo('','Condições adicionadas à consulta!')

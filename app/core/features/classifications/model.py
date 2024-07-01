@@ -1,3 +1,4 @@
+from tkinter import messagebox as msg
 import pickle as pkl
 
 class Model:
@@ -17,3 +18,5 @@ class Model:
 
         with open('data/classification.pkl', 'wb') as file:
             pkl.dump(self.dict, file)
+
+        msg.showinfo('','Condições adicionadas à consulta!')

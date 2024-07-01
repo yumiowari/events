@@ -1,3 +1,4 @@
+from tkinter import messagebox as msg
 import pickle as pkl
 import os
 
@@ -72,14 +73,15 @@ class Model:
             with open('data/venue.pkl', 'rb') as file:
                 venueDict = dict(pkl.load(file))
 
-        # faz a consulta AdHoc
+        # faz a consulta dinâmica
         session = self.session()
 
+        ## preenche as condições
         conditions = []
         relations = []
         globalFlag = False # infere se já iniciou a query
 
-        ## attractions
+        ### attractions
         localFlag = False # infere se a tabela já foi concatenada
 
         if attractionDict['id'] != '':
@@ -94,9 +96,9 @@ class Model:
             globalFlag = True
 
             relations.append(self.attractionDict)
-        ##
+        ###
 
-        ## classifications
+        ### classifications
         localFlag = False
 
         if classificationDict['id'] != '':
@@ -120,9 +122,9 @@ class Model:
                 query = query.join(Classification)
 
             relations.append(self.classificationDict)
-        ##
+        ###
 
-        ## events
+        ### events
         localFlag = False
 
         if eventDict['id'] != '':
@@ -161,9 +163,9 @@ class Model:
                 query = query.join(Event)
 
             relations.append(self.eventDict)
-        ##
+        ###
 
-        ## venues
+        ### venues
         localFlag = False
 
         if venueDict['id'] != '':
@@ -196,26 +198,34 @@ class Model:
                 query = query.join(Venue)
 
             relations.append(self.venueDict)
-        ##
+        ###
 
-        if conditions:
-            query = query.filter(and_(*conditions))
+        if globalFlag == True:
+            if conditions:
+                query = query.filter(and_(*conditions))
 
-        results = query.all()
+            results = query.all()
 
-        self.showResults(results, relations)
+            self.showResults(results, relations)
+
+            msg.showinfo('','Consulta realizada com sucesso.')
+        else:
+            msg.showerror('','Nenhuma condição foi informada.')
 
         session.close()
+        ##
+
         #
 
     def showResults(self, results, relations):
         if not results:
-            print("No results found.")
+            print("Nenhuma tupla foi encontrada.")
             return
 
         for result in results:
-            print("Result:")
+            print("Resultado:")
             for relation in relations:
                 for key, value in relation.items():
                     print(f"{key}: {getattr(result, key, 'N/A')}")
-            print("-" * 20)
+                print()
+            print("-------------------------")

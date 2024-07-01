@@ -5,7 +5,7 @@ class View:
         self.root = root
         self.controller = controller
 
-        self.root.title("Events")
+        self.root.title("Ad-Hoc")
         self.root.geometry("400x300")
 
         self.menubar = tk.Menu(self.root)
