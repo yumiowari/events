@@ -7,3 +7,6 @@ class Controller:
 
         self.model = Model()
         self.view = View(self.root, self)
+
+    def sendQuery(self):
+        pass

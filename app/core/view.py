@@ -18,3 +18,9 @@ class View:
         self.menubar.add_cascade(label="Consultar", menu=self.ordermenu)
 
         self.root.config(menu=self.menubar)
+
+        # botão de confirmação
+        self.confirm = tk.Button(self.root, text="Enviar", command=self.controller.makeAdHoc)
+
+        self.confirm.pack(side = tk.BOTTOM)
+        #

@@ -28,3 +28,6 @@ class Controller:
         
     def readVenues(self):
         self.ctrlVenues = CtrlVenues(self.root)
+
+    def makeAdHoc(self):
+        pass
