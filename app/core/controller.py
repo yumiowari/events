@@ -8,6 +8,8 @@ from core.features.classifications.controller import Controller as CtrlClassific
 from core.features.events.controller import Controller as CtrlEvents
 from core.features.venues.controller import Controller as CtrlVenues
 
+from tkinter import messagebox as msg
+
 class Controller:
     def __init__(self):
         self.root = tk.Tk()
@@ -31,3 +33,5 @@ class Controller:
 
     def makeAdHoc(self):
         self.model.makeAdHoc()
+
+        msg.showinfo('','Consulta realizada com sucesso.')

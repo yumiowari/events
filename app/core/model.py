@@ -74,7 +74,9 @@ class Model:
 
         # faz a consulta AdHoc
         session = self.session()
+
         conditions = []
+        relations = []
         globalFlag = False # infere se já iniciou a query
 
         ## attractions
@@ -90,6 +92,8 @@ class Model:
         if localFlag == True:
             query = session.query(Attraction)
             globalFlag = True
+
+            relations.append(self.attractionDict)
         ##
 
         ## classifications
@@ -114,6 +118,8 @@ class Model:
                 globalFlag = True
             else:
                 query = query.join(Classification)
+
+            relations.append(self.classificationDict)
         ##
 
         ## events
@@ -153,6 +159,8 @@ class Model:
                 globalFlag = True
             else:
                 query = query.join(Event)
+
+            relations.append(self.eventDict)
         ##
 
         ## venues
@@ -186,13 +194,28 @@ class Model:
                 globalFlag = True
             else:
                 query = query.join(Venue)
+
+            relations.append(self.venueDict)
         ##
 
-        query = query.filter(and_(*conditions))
+        if conditions:
+            query = query.filter(and_(*conditions))
 
         results = query.all()
 
-        for result in results:
-            print(result)
-            print()
+        self.showResults(results, relations)
+
+        session.close()
         #
+
+    def showResults(self, results, relations):
+        if not results:
+            print("No results found.")
+            return
+
+        for result in results:
+            print("Result:")
+            for relation in relations:
+                for key, value in relation.items():
+                    print(f"{key}: {getattr(result, key, 'N/A')}")
+            print("-" * 20)

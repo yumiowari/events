@@ -18,3 +18,5 @@ class Controller:
         address = self.view.address.get()
 
         self.model.fillDict(id, name, postalCode, timezone, city, state, address)
+
+        msg.showinfo('','Condições adicionadas à consulta!')
