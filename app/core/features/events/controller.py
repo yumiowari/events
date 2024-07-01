@@ -9,4 +9,14 @@ class Controller:
         self.view = View(self.root, self)
 
     def sendQuery(self):
-        pass
+        id = self.view.id.get()
+        name = self.view.name.get()
+        startDateSale = self.view.startDateSale.get()
+        endDateSale = self.view.endDateSale.get()
+        startDateEvent = self.view.startDateEvent.get()
+        timezone = self.view.timezone.get()
+        minPrice = self.view.minPrice.get()
+        maxPrice = self.view.maxPrice.get()
+        promoter = self.view.promoter.get()
+
+        self.model.fillDict(id, name, startDateSale, endDateSale, startDateEvent, timezone, minPrice, maxPrice, promoter)

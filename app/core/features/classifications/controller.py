@@ -9,4 +9,9 @@ class Controller:
         self.view = View(self.root, self)
 
     def sendQuery(self):
-        pass
+        id = self.view.id.get()
+        name = self.view.name.get()
+        segment = self.view.segment.get()
+        segmentid = self.view.segmentid.get()
+
+        self.model.fillDict(id, name, segment, segmentid)

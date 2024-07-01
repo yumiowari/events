@@ -1,5 +1,29 @@
-import psycopg
+import pickle as pkl
 
 class Model:
     def __init__(self):
-        pass
+        self.dict = {
+            'id': '',
+            'name': '',
+            'startDateSale': '',
+            'endDateSale': '',
+            'startDateEvent': '',
+            'timezone': '',
+            'minPrice': '',
+            'maxPrice': '',
+            'promoter': ''
+        }
+
+    def fillDict(self, id, name, startDateSale, endDateSale, startDateEvent, timezone, minPrice, maxPrice, promoter):
+        self.dict['id'] = id
+        self.dict['name'] = name
+        self.dict['startDateSale'] = startDateSale
+        self.dict['endDateSale'] = endDateSale
+        self.dict['startDateEvent'] = startDateEvent
+        self.dict['timezone'] = timezone
+        self.dict['minPrice'] = minPrice
+        self.dict['maxPrice'] = maxPrice
+        self.dict['promoter'] = promoter
+
+        with open('data/event.pkl', 'wb') as file:
+            pkl.dump(self.dict, file)

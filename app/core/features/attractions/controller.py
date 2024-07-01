@@ -9,4 +9,7 @@ class Controller:
         self.view = View(self.root, self)
 
     def sendQuery(self):
-        pass
+        id = self.view.id.get()
+        name = self.view.name.get()
+
+        self.model.fillDict(id, name)

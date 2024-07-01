@@ -30,4 +30,4 @@ class Controller:
         self.ctrlVenues = CtrlVenues(self.root)
 
     def makeAdHoc(self):
-        pass
+        self.model.makeAdHoc()
