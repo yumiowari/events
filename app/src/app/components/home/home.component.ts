@@ -181,7 +181,7 @@ export class HomeComponent implements OnInit {
   getTableStructure(tableName: string) {
     switch (tableName) {
       case "Events":
-        this.eventFields = ['id', 'name', 'url', 'startDateSale', 'EndDateSale', 'StartDateEvent', 'timezone', 'minprice', 'maxprice', 'promoter', 'venueid', 'classificationsid'];
+        this.eventFields = ['id', 'name', 'url', 'startdatesale', 'enddatesale', 'startdateevent', 'timezone', 'minprice', 'maxprice', 'promoter', 'venueid', 'classificationsid'];
         break;
 
       case "Venues":
@@ -259,35 +259,7 @@ export class HomeComponent implements OnInit {
         request.where.events = data.eventTableFilters;
         request.operators.events = [form.controls.eventOperator1.value, form.controls.eventOperator2.value, form.controls.eventOperator3.value];
         request.values.events = [form.controls.eventValue1.value, form.controls.eventValue2.value, form.controls.eventValue3.value];
-      } else if (table === "Classifications") {
-        request.select.classifications = data.classificationsTableFields;
-        request.join.push("classifications");
-        request.where.classifications = data.classificationsTableFilters;
-        request.operators.classifications = [form.controls.classificationsOperator1.value, form.controls.classificationsOperator2.value, form.controls.classificationsOperator3.value];
-        request.values.classifications = [form.controls.classificationsValue1.value, form.controls.classificationsValue2.value, form.controls.classificationsValue3.value];
-      } else if (table === "Venues") {
-        if (this.selectedTables.includes("Events")) {
-          request.select.venues = data.venuesTableFields;
-          request.join.push("venues_event");
-          request.join.push("venues");
-          request.where.venues = data.venuesTableFilters;
-          request.operators.venues = [form.controls.venuesOperator1.value, form.controls.venuesOperator2.value, form.controls.venuesOperator3.value];
-          request.values.venues = [form.controls.venuesValue1.value, form.controls.venuesValue2.value, form.controls.venuesValue3.value];
-        }else {
-          request.select.venues = data.venuesTableFields;
-          request.join.push("venues");
-          request.where.venues = data.venuesTableFilters;
-          request.operators.venues = [form.controls.venuesOperator1.value, form.controls.venuesOperator2.value, form.controls.venuesOperator3.value];
-          request.values.venues = [form.controls.venuesValue1.value, form.controls.venuesValue2.value, form.controls.venuesValue3.value];
-        }
-      } else if (table === "Attractions") {
-        request.select.attractions = data.attractionsTableFields;
-        request.join.push("attractions");
-        request.where.attractions = data.attractionsTableFilters;
-        request.operators.attractions = [form.controls.attractionsOperator1.value, form.controls.attractionsOperator2.value, form.controls.attractionsOperator3.value];
-        request.values.attractions = [form.controls.attractionsValue1.value, form.controls.attractionsValue2.value, form.controls.attractionsValue3.value];
-      } 
-
+       }
       request = this.formatData(request, form);
     })
 
