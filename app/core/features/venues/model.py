@@ -6,17 +6,17 @@ class Model:
         self.dict = {
             'id': '',
             'name': '',
-            'postalCode': '',
+            'postalcode': '',
             'timezone': '',
             'city': '',
             'state': '',
             'address': ''
         }
 
-    def fillDict(self, id, name, postalCode, timezone, city, state, address):
+    def fillDict(self, id, name, postalcode, timezone, city, state, address):
         self.dict['id'] = id
         self.dict['name'] = name
-        self.dict['postalCode'] = postalCode
+        self.dict['postalcode'] = postalcode
         self.dict['timezone'] = timezone
         self.dict['city'] = city
         self.dict['state'] = state

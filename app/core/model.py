@@ -25,19 +25,19 @@ class Model:
         self.eventDict = {
             'id': '',
             'name': '',
-            'startDateSale': '',
-            'endDateSale': '',
-            'startDateEvent': '',
+            'startdatesale': '',
+            'enddatesale': '',
+            'startdateevent': '',
             'timezone': '',
-            'minPrice': '',
-            'maxPrice': '',
+            'minprice': '',
+            'maxprice': '',
             'promoter': ''
         }
 
         self.venueDict = {
             'id': '',
             'name': '',
-            'postalCode': '',
+            'postalcode': '',
             'timezone': '',
             'city': '',
             'state': '',
@@ -133,23 +133,23 @@ class Model:
         if eventDict['name'] != '':
             conditions.append(Event.name == eventDict['name'])
             localFlag = True
-        if eventDict['startDateSale'] != '':
-            conditions.append(Event.startdatesale == eventDict['startDateSale'])
+        if eventDict['startdatesale'] != '':
+            conditions.append(Event.startdatesale == eventDict['startdatesale'])
             localFlag = True
-        if eventDict['endDateSale'] != '':
-            conditions.append(Event.enddatesale == eventDict['endDateSale'])
+        if eventDict['enddatesale'] != '':
+            conditions.append(Event.enddatesale == eventDict['enddatesale'])
             localFlag = True
-        if eventDict['startDateEvent'] != '':
-            conditions.append(Event.startdateevent == eventDict['startDateEvent'])
+        if eventDict['startdateevent'] != '':
+            conditions.append(Event.startdateevent == eventDict['startdateevent'])
             localFlag = True
         if eventDict['timezone'] != '':
             conditions.append(Event.timezone == eventDict['timezone'])
             localFlag = True
-        if eventDict['minPrice'] != '':
-            conditions.append(Event.minprice == eventDict['minPrice'])
+        if eventDict['minprice'] != '':
+            conditions.append(Event.minprice == eventDict['minprice'])
             localFlag = True
-        if eventDict['maxPrice'] != '':
-            conditions.append(Event.maxprice == eventDict['maxPrice'])
+        if eventDict['maxprice'] != '':
+            conditions.append(Event.maxprice == eventDict['maxprice'])
             localFlag = True
         if eventDict['promoter'] != '':
             conditions.append(Event.promoter == eventDict['promoter'])
@@ -174,8 +174,8 @@ class Model:
         if venueDict['name'] != '':
             conditions.append(Venue.name == venueDict['name'])
             localFlag = True
-        if venueDict['postalCode'] != '':
-            conditions.append(Venue.postalcode == venueDict['postalCode'])
+        if venueDict['postalcode'] != '':
+            conditions.append(Venue.postalcode == venueDict['postalcode'])
             localFlag = True
         if venueDict['timezone'] != '':
             conditions.append(Venue.timezone == venueDict['timezone'])

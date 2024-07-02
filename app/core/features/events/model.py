@@ -6,24 +6,24 @@ class Model:
         self.dict = {
             'id': '',
             'name': '',
-            'startDateSale': '',
-            'endDateSale': '',
-            'startDateEvent': '',
+            'startdatesale': '',
+            'enddatesale': '',
+            'startdateevent': '',
             'timezone': '',
-            'minPrice': '',
-            'maxPrice': '',
+            'minprice': '',
+            'maxprice': '',
             'promoter': ''
         }
 
-    def fillDict(self, id, name, startDateSale, endDateSale, startDateEvent, timezone, minPrice, maxPrice, promoter):
+    def fillDict(self, id, name, startdatesale, enddatesale, startdateevent, timezone, minprice, maxprice, promoter):
         self.dict['id'] = id
         self.dict['name'] = name
-        self.dict['startDateSale'] = startDateSale
-        self.dict['endDateSale'] = endDateSale
-        self.dict['startDateEvent'] = startDateEvent
+        self.dict['startdatesale'] = startdatesale
+        self.dict['enddatesale'] = enddatesale
+        self.dict['startdateevent'] = startdateevent
         self.dict['timezone'] = timezone
-        self.dict['minPrice'] = minPrice
-        self.dict['maxPrice'] = maxPrice
+        self.dict['minprice'] = minprice
+        self.dict['maxprice'] = maxprice
         self.dict['promoter'] = promoter
 
         with open('data/event.pkl', 'wb') as file:
