@@ -12,8 +12,8 @@ import * as XLSX from 'xlsx';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
-  tables: string[] = ['Events'];
-  relatedTables: string[] = ['Classifications', 'Venues', 'Attractions'];
+  tables: string[] = ['Events', 'Attractions'];
+  relatedTables: string[] = ['Classifications', 'Venues'];
   selectedTables: string[] = [];
   selectedMainTable!: string;
   reportData: any;
