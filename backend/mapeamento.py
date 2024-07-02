@@ -7,7 +7,7 @@ Base = declarative_base()
 metadata = Base.metadata
 
 
-class Classification(Base):
+class Classifications(Base):
     __tablename__ = 'classifications'
 
     id = Column(String(20), primary_key=True)
