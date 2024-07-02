@@ -19,6 +19,13 @@
                             <mat-option *ngFor="let table of relatedTables" [value]="table">{{ table }}</mat-option>
                         </mat-select>
                     </mat-form-field>
+                    <mat-form-field *ngIf="selectedMainTable === 'Attractions'">
+                        <mat-label>Tabelas Relacionadas</mat-label>
+                        <mat-select formControlName="selectedRelatedTables"
+                            (selectionChange)="onRelatedTablesSelectionChange()" multiple>
+                            <mat-option *ngFor="let table of relatedTables" [value]="table">{{ table }}</mat-option>
+                        </mat-select>
+                    </mat-form-field>
                 </div>
 
                 <div *ngIf="selectedMainTable" class="form-section">

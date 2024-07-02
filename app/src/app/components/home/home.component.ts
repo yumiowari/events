@@ -216,7 +216,7 @@ export class HomeComponent implements OnInit {
 
     // Adicionar as novas tabelas selecionadas
     selectedRelatedTables.forEach((element: string) => {
-      if (element !== 'Events' && !this.selectedTables.includes(element)) {
+      if (element !== 'Events' && element !== 'Attractions' && !this.selectedTables.includes(element)) {
         this.selectedTables.push(element);
       }
     });
